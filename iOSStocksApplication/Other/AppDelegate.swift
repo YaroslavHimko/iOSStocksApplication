@@ -27,9 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func debug() {
-        APIManager.shared.news(for: .company(symbol: "AAPL")) { result in
-            print(result)
-        }
+        
     }
 }
 
