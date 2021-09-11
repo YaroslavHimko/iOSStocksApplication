@@ -7,5 +7,5 @@ target 'iOSStocksApplication' do
 
   pod 'FloatingPanel'
   pod 'SDWebImage' 
-
+  pod 'Charts'
 end

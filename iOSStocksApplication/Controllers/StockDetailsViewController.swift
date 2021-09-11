@@ -94,7 +94,20 @@ class StockDetailsViewController: UIViewController {
         // Fetch candle sticks if needed
         if candleStickData.isEmpty {
             group.enter()
+            APIManager.shared.marketData(for: symbol) { [weak self] result in
+                defer {
+                    group.leave()
+                }
+                
+                switch result {
+                case .success(let response):
+                    self?.candleStickData = response.candleSticks
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
+        
         // Fetch financial metrics
         group.enter()
         APIManager.shared.financialMetrics(for: symbol) { [weak self] result in
@@ -148,16 +161,34 @@ class StockDetailsViewController: UIViewController {
             viewModels.append(.init(name: "52W Beta", value: "\(metrics.beta)"))
             viewModels.append(.init(name: "10D Vol.", value: "\(metrics.TenDayAverageTradingVolume)"))
         }
+        
         // Configure
+        let change = getChangePercentage(symbol: symbol, data: candleStickData)
         headerView.configure(
             chartViewModel: .init(
-                data: [],
-                showLegend: false,
-                showAxis: false
+                data: candleStickData.reversed().map { $0.close },
+                showLegend: true,
+                showAxis: true,
+                fillColor: change < 0 ? .systemRed : .systemGreen
             ),
             metricViewModels: viewModels
         )
         tableView.tableHeaderView = headerView
+    }
+    
+    private func getChangePercentage(symbol: String, data: [CandleStick]) -> Double {
+        let latestDate = data[0].date
+        //let priorDate = Date().addingTimeInterval((-(3600 * 24) * 2))
+        guard let latestClose = data.first?.close,
+              let priorClose = data.first(where: {
+                !Calendar.current.isDate($0.date, inSameDayAs: latestDate)
+              })?.close else {
+            return 0
+        }
+        
+        let diff = 1 - (priorClose/latestClose)
+        
+        return diff
     }
 }
 
