@@ -95,13 +95,13 @@
 				178FF909268BA384003E9914 /* Managers */,
 				178FF908268BA37B003E9914 /* Models */,
 				178FF907268BA376003E9914 /* Views */,
-				178FF906268BA36D003E9914 /* Cotrollers */,
+				178FF906268BA36D003E9914 /* Controllers */,
 				178FF900268BA2DE003E9914 /* Info.plist */,
 			);
 			path = iOSStocksApplication;
 			sourceTree = "<group>";
 		};
-		178FF906268BA36D003E9914 /* Cotrollers */ = {
+		178FF906268BA36D003E9914 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				178FF8F6268BA2DD003E9914 /* WatchlistViewControllerViewController.swift */,
@@ -109,7 +109,7 @@
 				178FF90D268BA435003E9914 /* SearchResultsViewController.swift */,
 				178FF90F268BA441003E9914 /* StockDetailsViewController.swift */,
 			);
-			path = Cotrollers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		178FF907268BA376003E9914 /* Views */ = {
