@@ -8,14 +8,21 @@
 import SafariServices
 import UIKit
 
-class StockDetailsViewController: UIViewController {
+/// VC to show stock details
+final class StockDetailsViewController: UIViewController {
     
     //MARK: - Properties
 
+    /// Stock symbol
     private let symbol: String
+    
+    /// Company name
     private let companyName: String
+    
+    /// Collection of data
     private var candleStickData: [CandleStick]
     
+    /// Primary view
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(NewsHeaderView.self, forHeaderFooterViewReuseIdentifier: NewsHeaderView.identifier)
@@ -23,8 +30,10 @@ class StockDetailsViewController: UIViewController {
         return table
     }()
     
+    /// Collection of news stories
     private var stories: [NewsStory] = []
     
+    /// Company metrics
     private var metrics: Metrics?
     
     //MARK: - Init
@@ -63,6 +72,7 @@ class StockDetailsViewController: UIViewController {
     
     //MARK: - Private
     
+    /// Sets up close button
     private func setUpCloseButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .close,
@@ -71,10 +81,12 @@ class StockDetailsViewController: UIViewController {
         )
     }
     
+    /// Handle close button tap
     @objc private func didTapClose() {
         dismiss(animated: true, completion: nil)
     }
     
+    /// Sets up table
     private func setUpTable() {
         view.addSubview(tableView)
         tableView.delegate = self
@@ -89,6 +101,7 @@ class StockDetailsViewController: UIViewController {
         )
     }
     
+    /// Fetch financial metrics
     private func fetchFinancialData() {
         let group = DispatchGroup()
         // Fetch candle sticks if needed
@@ -128,6 +141,7 @@ class StockDetailsViewController: UIViewController {
         }
     }
     
+    /// Fetch news for given type
     private func fetchNews() {
         APIManager.shared.news(for: .company(symbol: symbol)) { [weak self] result in
             switch result {
@@ -142,6 +156,7 @@ class StockDetailsViewController: UIViewController {
         }
     }
     
+    /// Render chart and metrics
     private func renderChart() {
         // Chart ViewModel | FinancialMetricViewModel(s)
         let headerView = StockDetailHeaderView(
@@ -163,7 +178,7 @@ class StockDetailsViewController: UIViewController {
         }
         
         // Configure
-        let change = getChangePercentage(symbol: symbol, data: candleStickData)
+        let change = candleStickData.getPercentage()
         headerView.configure(
             chartViewModel: .init(
                 data: candleStickData.reversed().map { $0.close },
@@ -175,22 +190,9 @@ class StockDetailsViewController: UIViewController {
         )
         tableView.tableHeaderView = headerView
     }
-    
-    private func getChangePercentage(symbol: String, data: [CandleStick]) -> Double {
-        let latestDate = data[0].date
-        //let priorDate = Date().addingTimeInterval((-(3600 * 24) * 2))
-        guard let latestClose = data.first?.close,
-              let priorClose = data.first(where: {
-                !Calendar.current.isDate($0.date, inSameDayAs: latestDate)
-              })?.close else {
-            return 0
-        }
-        
-        let diff = 1 - (priorClose/latestClose)
-        
-        return diff
-    }
 }
+
+//MARK: - TableView
 
 extension StockDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -232,13 +234,21 @@ extension StockDetailsViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let url = URL(string: stories[indexPath.row].url) else { return }
+        
+        HapticsManager.shared.vibrateForSelection()
+
         let vc = SFSafariViewController(url: url)
         present(vc, animated: true)
     }
 }
 
+//MARK: - NewsHeaderViewDelegate
+
 extension StockDetailsViewController: NewsHeaderViewDelegate {
     func newsHeaderViewDidTapAddButton(_ headerView: NewsHeaderView) {
+        
+        HapticsManager.shared.vibrate(for: .success)
+
         headerView.button.isHidden = true
         PersistenceManager.shared.addToWatchlist(symbol: symbol, companyName: companyName)
         

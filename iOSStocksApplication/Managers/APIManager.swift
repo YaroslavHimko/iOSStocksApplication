@@ -7,9 +7,12 @@
 
 import Foundation
 
+/// Object to manage api calls
 final class APIManager {
-    static let shared = APIManager()
+    /// Singleton
+    public static let shared = APIManager()
     
+    /// Constants
     private struct Constants {
         static let apiKey = "c3dnpfaad3icrjj6nf90"
         static let sandboxApiKey = "sandbox_c3dnpfaad3icrjj6nf9g"
@@ -17,10 +20,15 @@ final class APIManager {
         static let day: TimeInterval = 3600 * 24
     }
     
+    /// Private constructor
     private init() {}
     
     //MARK: - Public
     
+    /// Search for a company
+    /// - Parameters:
+    ///   - query: Query string (symbol or name)
+    ///   - completion: Callback for result
     public func search(
         query: String,
         completion: @escaping (Result<SearchResponse, Error>) -> Void
@@ -40,6 +48,10 @@ final class APIManager {
         )
     }
     
+    /// Get news for type
+    /// - Parameters:
+    ///   - type: Company or top stories
+    ///   - completion: Result callback
     public func news(
         for type: NewsViewController.`Type`,
         completion: @escaping (Result<[NewsStory], Error>) -> Void
@@ -72,6 +84,11 @@ final class APIManager {
         }
     }
     
+    /// Get market data
+    /// - Parameters:
+    ///   - symbol: Given symbol
+    ///   - numberOfDays: Number of days back from today
+    ///   - completion: Result callback
     public func marketData(
         for symbol: String,
         numberOfDays: TimeInterval = 7,
@@ -95,6 +112,10 @@ final class APIManager {
         )
     }
     
+    /// Get financial metrics
+    /// - Parameters:
+    ///   - symbol: Symbol of company
+    ///   - completion: Result callback
     public func financialMetrics(
         for symbol: String,
         completion: @escaping (Result<FinancialMetricsResponse, Error>) -> Void
@@ -110,6 +131,7 @@ final class APIManager {
     
     //MARK: - Private
     
+    /// API endpoints
     private enum Endpoint: String {
         case search
         case topStories = "news"
@@ -118,11 +140,17 @@ final class APIManager {
         case financials = "stock/metric"
     }
     
+    /// API errors
     private enum APIError: Error {
         case noDataReturned
         case invalidUrl
     }
     
+    /// Try to create url for endpoint
+    /// - Parameters:
+    ///   - endpoint: Endpoint to create for
+    ///   - queryParams: Additional query arguments
+    /// - Returns: Optional URL
     private func url(
         for endpoint: Endpoint,
         queryParams: [String: String] = [:]
@@ -145,6 +173,11 @@ final class APIManager {
         return URL(string: urlString)
     }
     
+    /// Perform API call
+    /// - Parameters:
+    ///   - url: URL to hit
+    ///   - expecting: Type we expect to decode data to
+    ///   - completion: Result callback
     private func request<T: Codable>(
         url: URL?,
         expecting: T.Type,

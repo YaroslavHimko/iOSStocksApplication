@@ -22,6 +22,7 @@
 		178FF918268BAF18003E9914 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178FF917268BAF18003E9914 /* Extensions.swift */; };
 		178FF91A268BB0DF003E9914 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178FF919268BB0DF003E9914 /* SearchResultTableViewCell.swift */; };
 		178FF91C268BB74C003E9914 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178FF91B268BB74C003E9914 /* SearchResponse.swift */; };
+		17AA2748271C5AEE009542B5 /* iOSStocksApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AA2747271C5AEE009542B5 /* iOSStocksApplicationTests.swift */; };
 		17C187AA26CD7E0500B4F661 /* NewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C187A926CD7E0500B4F661 /* NewsHeaderView.swift */; };
 		17C187AC26D0390400B4F661 /* NewsStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C187AB26D0390400B4F661 /* NewsStory.swift */; };
 		17C187AE26D03D4B00B4F661 /* NewsStoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C187AD26D03D4B00B4F661 /* NewsStoryTableViewCell.swift */; };
@@ -32,6 +33,16 @@
 		17C187B826ED5F1700B4F661 /* StockDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C187B726ED5F1700B4F661 /* StockDetailHeaderView.swift */; };
 		17C187BA26ED6A1300B4F661 /* MetricCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C187B926ED6A1300B4F661 /* MetricCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		17AA2749271C5AEE009542B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 178FF8E7268BA2DD003E9914 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 178FF8EE268BA2DD003E9914;
+			remoteInfo = iOSStocksApplication;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		178FF8EF268BA2DD003E9914 /* iOSStocksApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSStocksApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,6 +61,8 @@
 		178FF917268BAF18003E9914 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		178FF919268BB0DF003E9914 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		178FF91B268BB74C003E9914 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		17AA2745271C5AEE009542B5 /* iOSStocksApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSStocksApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17AA2747271C5AEE009542B5 /* iOSStocksApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSStocksApplicationTests.swift; sourceTree = "<group>"; };
 		17C187A926CD7E0500B4F661 /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
 		17C187AB26D0390400B4F661 /* NewsStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStory.swift; sourceTree = "<group>"; };
 		17C187AD26D03D4B00B4F661 /* NewsStoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsStoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -73,6 +86,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17AA2742271C5AEE009542B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				178FF8F1268BA2DD003E9914 /* iOSStocksApplication */,
+				17AA2746271C5AEE009542B5 /* iOSStocksApplicationTests */,
 				178FF8F0268BA2DD003E9914 /* Products */,
 				5CC1C9120B8A3FDB3A570882 /* Pods */,
 				6435A9047DF80D2F7D5CB10D /* Frameworks */,
@@ -90,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				178FF8EF268BA2DD003E9914 /* iOSStocksApplication.app */,
+				17AA2745271C5AEE009542B5 /* iOSStocksApplicationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,6 +187,14 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		17AA2746271C5AEE009542B5 /* iOSStocksApplicationTests */ = {
+			isa = PBXGroup;
+			children = (
+				17AA2747271C5AEE009542B5 /* iOSStocksApplicationTests.swift */,
+			);
+			path = iOSStocksApplicationTests;
+			sourceTree = "<group>";
+		};
 		5CC1C9120B8A3FDB3A570882 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,17 +234,39 @@
 			productReference = 178FF8EF268BA2DD003E9914 /* iOSStocksApplication.app */;
 			productType = "com.apple.product-type.application";
 		};
+		17AA2744271C5AEE009542B5 /* iOSStocksApplicationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17AA274D271C5AEE009542B5 /* Build configuration list for PBXNativeTarget "iOSStocksApplicationTests" */;
+			buildPhases = (
+				17AA2741271C5AEE009542B5 /* Sources */,
+				17AA2742271C5AEE009542B5 /* Frameworks */,
+				17AA2743271C5AEE009542B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17AA274A271C5AEE009542B5 /* PBXTargetDependency */,
+			);
+			name = iOSStocksApplicationTests;
+			productName = iOSStocksApplicationTests;
+			productReference = 17AA2745271C5AEE009542B5 /* iOSStocksApplicationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		178FF8E7268BA2DD003E9914 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					178FF8EE268BA2DD003E9914 = {
 						CreatedOnToolsVersion = 12.5.1;
+					};
+					17AA2744271C5AEE009542B5 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 178FF8EE268BA2DD003E9914;
 					};
 				};
 			};
@@ -232,6 +284,7 @@
 			projectRoot = "";
 			targets = (
 				178FF8EE268BA2DD003E9914 /* iOSStocksApplication */,
+				17AA2744271C5AEE009542B5 /* iOSStocksApplicationTests */,
 			);
 		};
 /* End PBXProject section */
@@ -243,6 +296,13 @@
 			files = (
 				178FF8FF268BA2DE003E9914 /* LaunchScreen.storyboard in Resources */,
 				178FF8FC268BA2DE003E9914 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17AA2743271C5AEE009542B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,7 +379,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17AA2741271C5AEE009542B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17AA2748271C5AEE009542B5 /* iOSStocksApplicationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		17AA274A271C5AEE009542B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 178FF8EE268BA2DD003E9914 /* iOSStocksApplication */;
+			targetProxy = 17AA2749271C5AEE009542B5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		178FF8FD268BA2DE003E9914 /* LaunchScreen.storyboard */ = {
@@ -489,6 +565,56 @@
 			};
 			name = Release;
 		};
+		17AA274B271C5AEE009542B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TAC8Z782S6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Yaroslav.Himko.iOSStocksApplicationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSStocksApplication.app/iOSStocksApplication";
+			};
+			name = Debug;
+		};
+		17AA274C271C5AEE009542B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TAC8Z782S6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Yaroslav.Himko.iOSStocksApplicationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSStocksApplication.app/iOSStocksApplication";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -506,6 +632,15 @@
 			buildConfigurations = (
 				178FF904268BA2DE003E9914 /* Debug */,
 				178FF905268BA2DE003E9914 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17AA274D271C5AEE009542B5 /* Build configuration list for PBXNativeTarget "iOSStocksApplicationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17AA274B271C5AEE009542B5 /* Debug */,
+				17AA274C271C5AEE009542B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

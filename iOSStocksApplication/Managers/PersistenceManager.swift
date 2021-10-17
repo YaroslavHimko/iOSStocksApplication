@@ -7,23 +7,26 @@
 
 import Foundation
 
-// ["AAPL", "MSFT", "SNAP"]
-// [AAPL: Apple Inc.]
-
+/// Object to manage saved caches
 final class PersistenceManager {
+    /// Singleton
     static let shared = PersistenceManager()
     
+    /// Referemce to user defaults
     private let userDefaults: UserDefaults = .standard
     
+    /// Constants
     private struct Constants {
         static let onboardedKey = "hasOnboarded"
         static let watchlistKey = "watchlist"
     }
     
+    /// Private constructor
     private init() {}
     
     //MARK: - Public
 
+    /// Get user watchlist
     public var watchlist: [String] {
         if !hasOnboarded {
             userDefaults.setValue(true, forKey: Constants.onboardedKey)
@@ -32,10 +35,17 @@ final class PersistenceManager {
         return userDefaults.stringArray(forKey: Constants.watchlistKey) ?? []
     }
     
+    /// Check if watchlist contains item
+    /// - Parameter symbol: Symbol to check
+    /// - Returns: Boolean
     public func watchlistContains(symbol: String) -> Bool {
         return watchlist.contains(symbol)
     }
     
+    /// Add a symbol to watchlist
+    /// - Parameters:
+    ///   - symbol: Symbol to add
+    ///   - companyName: Company name for symbol being added
     public func addToWatchlist(symbol: String, companyName: String) {
         var current = watchlist
         current.append(symbol)
@@ -45,6 +55,8 @@ final class PersistenceManager {
         NotificationCenter.default.post(name: .didAddToWatchlist, object: nil)
     }
     
+    /// Remove item from watchlist
+    /// - Parameter symbol: Symbol to remove
     public func removeFromWatchlist(symbol: String) {
         var newList = [String]()
         
@@ -58,10 +70,12 @@ final class PersistenceManager {
     
     //MARK: - Private
     
+    /// Check if user has been onboarded
     private var hasOnboarded: Bool {
         return userDefaults.bool(forKey: Constants.onboardedKey)
     }
     
+    /// Set up default watchlist
     private func setUpDefaults() {
         let map: [String: String] = [
             "AAPL": "Apple Inc.",
